@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory, Redirect} from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import {useHandleChange, useValidate, useErrors} from './hooks';
 import JoblyApi from './api';
 import Errors from './Errors';
@@ -58,52 +59,65 @@ function SignupForm({username, updateUser}) {
     };
 
     if (isLoading) {
-        return <p>Submitting Data...</p>
+        return <Spinner color='dark' size='lg'/>
     };
 
     return (
         <>
+            <h1 className='formheading'>Register For Jobly</h1>
             <Errors formErrors={formErrors}
                     apiErrors={apiErrors} />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='username'>Username: </label>
-                <input type='text' 
-                    name='username' 
-                    placeholder='Username'
-                    value={data.username}
-                    onChange={handleChange} />
-                <label htmlFor='password'>Password: </label>
-                <input type='password' 
-                    name='password' 
-                    placeholder='Password'
-                    value={data.password}
-                    onChange={handleChange} />
-                <label htmlFor='password2'>Retype Password: </label>
-                <input type='password' 
-                    name='password2' 
-                    placeholder='Retype Password'
-                    value={data.password2}
-                    onChange={handleChange} />
-                <label htmlFor='firstName'>First Name: </label>
-                <input type='text' 
-                    name='firstName' 
-                    placeholder='First Name'
-                    value={data.firstName}
-                    onChange={handleChange} />
-                <label htmlFor='lastName'>Last Name: </label>
-                <input type='text' 
-                    name='lastName' 
-                    placeholder='Last Name'
-                    value={data.lastName}
-                    onChange={handleChange} />
-                <label htmlFor='email'>Email: </label>
-                <input type='text' 
-                    name='email' 
-                    placeholder='example@example.com'
-                    value={data.email}
-                    onChange={handleChange} />
-                <button>Register</button>
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label htmlFor='username'>Username</Label>
+                    <Input type='text' 
+                        name='username' 
+                        placeholder='Username'
+                        value={data.username}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='password'>Password</Label>
+                    <Input type='password' 
+                        name='password' 
+                        placeholder='Password'
+                        value={data.password}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='password2'>Retype Password</Label>
+                    <Input type='password' 
+                        name='password2' 
+                        placeholder='Retype Password'
+                        value={data.password2}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='firstName'>First Name</Label>
+                    <Input type='text' 
+                        name='firstName' 
+                        placeholder='First Name'
+                        value={data.firstName}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='lastName'>Last Name</Label>
+                    <Input type='text' 
+                        name='lastName' 
+                        placeholder='Last Name'
+                        value={data.lastName}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='email'>Email</Label>
+                    <Input type='text' 
+                        name='email' 
+                        placeholder='example@example.com'
+                        value={data.email}
+                        onChange={handleChange} />
+                </FormGroup>
+                <Button>Register</Button>
+            </Form>
         </>
     )
 }

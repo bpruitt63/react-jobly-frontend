@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import {Spinner} from 'reactstrap';
 import {useErrors} from './hooks';
 import JoblyApi from './api';
 import Job from './Job';
@@ -36,11 +37,12 @@ function Jobs({username, apps, getApps, apply, applicationErrors}) {
     }, [setIsLoading, username, history, getApps, getApiErrors]);
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner color='dark' size='lg'/>
     };
 
     return (
         <div>
+            <h1>Jobly Jobs</h1>
             <Errors formErrors={applicationErrors} 
                     apiErrors={apiErrors} />
             {jobs.map(j => <Job username={username}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useParams, useHistory} from 'react-router-dom';
+import {Spinner} from 'reactstrap';
 import JoblyApi from './api';
 import {useErrors} from './hooks';
 import CompanyInfo from './CompanyInfo';
@@ -37,16 +38,17 @@ function Company({username, apps, getApps, apply}) {
     }, [handle, username, history, getApps, getApiErrors]);
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner color='dark' size='lg'/>
     }
 
     return (
-        <div>
-            <Errors formErrors={{}}
-                    apiErrors={apiErrors} />
+        <div className='Company'>
+            <Errors apiErrors={apiErrors} />
             { Object.keys(apiErrors).length === 0 && 
                 <>
-                    <CompanyInfo company={company} />
+                    <CompanyInfo company={company}
+                                isCompanyList={false} />
+                    <h3>Jobs at {company.name}</h3>
                     <CompanyJobs jobs={company.jobs}
                                 username={username}
                                 apps={apps}

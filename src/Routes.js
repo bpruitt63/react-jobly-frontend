@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from './Home';
-import Navbar from './Navbar';
+import Navlist from './Navlist';
 import Companies from './Companies';
 import Company from './Company';
 import Jobs from './Jobs';
@@ -9,12 +9,13 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import Logout from './Logout';
 import ProfileForm from './ProfileForm';
+import { Container } from 'reactstrap';
 
 function Routes({username, updateUser, apps, getApps, apply, apiErrors}){
 
     return (
-        <>
-            <Navbar username={username}/>
+        <Container>
+            <Navlist username={username}/>
             <Switch>
                 <Route exact path='/'>
                     <Home username={username}/>
@@ -51,7 +52,7 @@ function Routes({username, updateUser, apps, getApps, apply, apiErrors}){
                 </Route>
                 <Redirect to='/' />
             </Switch>
-        </>
+        </Container>
     )
 }
 

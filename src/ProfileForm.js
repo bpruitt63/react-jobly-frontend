@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import {useHandleChange, useValidate, useErrors} from './hooks';
 import JoblyApi from './api';
 import Errors from './Errors';
@@ -68,44 +69,55 @@ function ProfileForm({username}) {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner color='dark' size='lg'/>
     };
 
     return (
         <>
+            <h2 className='formheading'>Update User Info For {username}</h2>
             <Errors formErrors={formErrors}
                     apiErrors={apiErrors} />
             { Object.keys(apiErrors).length === 0 && 
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor='firstName'>First Name: </label>
-                    <input type='text'
-                        name='firstName' 
-                        value={data.firstName}
-                        onChange={handleChange} />
-                    <label htmlFor='lastName'>Last Name: </label>
-                    <input type='text'
-                        name='lastName' 
-                        value={data.lastName}
-                        onChange={handleChange} />
-                    <label htmlFor='password'>Password: </label>
-                    <input type='password'
-                        name='password' 
-                        placeholder='New Password'
-                        value={data.password || ''}
-                        onChange={handleChange} />
-                    <label htmlFor='password2'>Retype New Password: </label>
-                    <input type='password'
-                        name='password2' 
-                        placeholder='Retype New Password'
-                        value={data.password2 || ''}
-                        onChange={handleChange} />
-                    <label htmlFor='email'>Email: </label>
-                    <input type='text'
-                        name='email' 
-                        value={data.email}
-                        onChange={handleChange} />
-                    <button>Update User Info</button>
-                </form>
+                <Form onSubmit={handleSubmit}>
+                    <FormGroup>
+                        <Label htmlFor='firstName'>First Name: </Label>
+                        <Input type='text'
+                            name='firstName' 
+                            value={data.firstName}
+                            onChange={handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor='lastName'>Last Name: </Label>
+                        <Input type='text'
+                            name='lastName' 
+                            value={data.lastName}
+                            onChange={handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor='password'>Password: </Label>
+                        <Input type='password'
+                            name='password' 
+                            placeholder='New Password'
+                            value={data.password || ''}
+                            onChange={handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor='password2'>Retype New Password: </Label>
+                        <Input type='password'
+                            name='password2' 
+                            placeholder='Retype New Password'
+                            value={data.password2 || ''}
+                            onChange={handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor='email'>Email: </Label>
+                        <Input type='text'
+                            name='email' 
+                            value={data.email}
+                            onChange={handleChange} />
+                    </FormGroup>
+                    <Button>Update User Info</Button>
+                </Form>
             }
         </>
     )

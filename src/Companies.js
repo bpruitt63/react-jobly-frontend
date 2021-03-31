@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import JoblyApi from './api';
 import CompanyInfo from './CompanyInfo';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import {Spinner} from 'reactstrap';
 import CompanySearchForm from './CompanySearchForm';
 import { useHandleChange, useErrors } from './hooks';
 import Errors from './Errors';
@@ -37,7 +38,7 @@ function Companies({username}) {
     }, [setIsLoading, username, history, getApiErrors])
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Spinner color='dark' size='lg'/>
     };
 
 
@@ -59,20 +60,19 @@ function Companies({username}) {
 
     return (
         <div>
-            <Errors formErrors={{}}
-                    apiErrors={apiErrors} />
+            <Errors apiErrors={apiErrors} />
             <CompanySearchForm 
                 data={data}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}/>
             {companies.length === 0 &&
                 Object.keys(apiErrors).length === 0 &&
-                <p>No companies fit the search criteria.</p>
+                <p className='lead'>No companies fit the search criteria.</p>
             }
             {companies.map(c => 
-                <Link to={`/companies/${c.handle}`} key={c.handle}>
-                    <CompanyInfo company={c} />
-                </Link>)
+                    <CompanyInfo company={c} key={c.handle}
+                        isCompanyList={true} />
+                )
             }
         </div>
     )

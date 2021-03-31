@@ -2,37 +2,87 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Nav {
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Nav a {
+  color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Nav a:hover {
+  color: darkslategray;
 }
 
-.App-link {
-  color: #61dafb;
+form {
+  display: inline-block;
+  width: 60%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form button {
+  margin-top: 20px;
+}
+
+label {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+.formheading {
+  padding-bottom: 25px;
+  border-bottom: 1px solid lightgray;
+}
+
+.CompanySearchForm {
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid lightgray;
+}
+
+.CompanySearchForm button {
+  margin-top: 0px;
+}
+
+.CompanyLogo {
+  width: 100px;
+  margin: 0px auto 20px auto;
+}
+
+.CompanyCard {
+  margin-bottom: 30px;
+}
+
+.CompanyCard a {
+  width: 50%;
+  margin: 5px auto;
+}
+
+.Company .CompanyCard {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  border-radius: 0%;
+}
+
+.Company .CompanyCard h3 {
+  font-size: 2.5em;
+}
+
+.JobCard {
+  padding-top: 20px;
+  margin: 30px 0px;
+}
+
+.JobCard button {
+  width: 50%;
+  margin: 5px auto 30px auto;
+}
+
+.JobCard a {
+  color:lightslategrey;
+  margin: 10px 0px;
+}
+
+.JobCard a:hover {
+  text-decoration: none;
+  color: darkslategray
 }

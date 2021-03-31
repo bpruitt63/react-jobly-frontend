@@ -1,21 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Card, CardTitle, CardText, Button} from 'reactstrap';
 
 function Job({username, job, apps, apply}){
     return (
-        <div>
-            <h3>{job.title}</h3>
+        <Card className='JobCard'>
+            <CardTitle tag='h4'>{job.title}</CardTitle>
             <Link to={`/companies/${job.companyHandle}`} >
                 <h5>{job.companyName}</h5>
             </Link>
-            <p>Salary: ${job.salary}</p>
-            <p>Equity: {job.equity}</p>
+            <CardText>Salary: ${job.salary}</CardText>
+            <CardText>Equity: {job.equity}</CardText>
             {apps.includes(job.id) ? 
-                <p>Already Applied</p>
+                <Button disabled>Already Applied</Button>
             :
-                <button onClick={() => apply(username, job.id)}>Apply</button>
+                <Button onClick={() => apply(username, job.id)}>Apply</Button>
             }
-        </div>
+        </Card>
     )
 }
 

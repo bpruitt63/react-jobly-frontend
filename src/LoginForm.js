@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect, useHistory} from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import {useHandleChange, useErrors} from './hooks';
 import JoblyApi from './api';
 import Errors from './Errors';
@@ -51,28 +52,33 @@ function LoginForm({username, updateUser}) {
     };
 
     if (isLoading) {
-        return <p>Verifying...</p>
+        return <Spinner color='dark' size='lg'/>
     };
 
     return (
         <>
+            <h1 className='formheading'>Log In To Jobly</h1>
             <Errors formErrors={errors}
                         apiErrors={apiErrors} />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='username'>Username: </label>
-                <input type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={data.username}
-                    onChange={handleChange} />
-                <label htmlFor='password'>Password: </label>
-                <input type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={data.password}
-                    onChange={handleChange} />
-                <button>Log In</button>
-        </form>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label htmlFor='username'>Username</Label>
+                    <Input type='text'
+                        name='username'
+                        placeholder='Username'
+                        value={data.username}
+                        onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='password'>Password</Label>
+                    <Input type='password'
+                        name='password'
+                        placeholder='Password'
+                        value={data.password}
+                        onChange={handleChange} />
+                </FormGroup>
+                <Button>Log In</Button>
+        </Form>
         </>
     )
 }
