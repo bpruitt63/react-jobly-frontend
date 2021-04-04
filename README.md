@@ -1,6 +1,6 @@
 Springboard front end React project.  Back end was written by Springboard, although I wrote a program with the same functionality previously, which can be found at https://github.com/bpruitt63/node-and-express/tree/main/express-jobly 
 
-Entire front end written by me, using Create React App.  The only exceptions are the first two functions in api.js; those were provided by Springboard.  Test writing was not part of this project, although I was pretty careful to ensure that all aspects work as intended.
+Entire front end written by me, using Create React App.  The only exceptions are the first two functions in api.js; those were provided by Springboard.  Strangely, test writing was not part of this project, although I was careful to ensure that all aspects work as intended.
 
 
 
